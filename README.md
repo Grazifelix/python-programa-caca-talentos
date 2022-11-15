@@ -30,3 +30,6 @@ Um programa de curso python oferecido pelo Governo do Estado de Pernambuco em co
 - Testes unitários 
 
 ### 2. Organização dos exercícios
+- **Estrutura Sequencial:** 
+
+    são exercícios iniciais com a linguagem python, no qual cada instrução de um programa é executado em sequência.
