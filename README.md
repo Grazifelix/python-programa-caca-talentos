@@ -30,6 +30,32 @@ Um programa de curso python oferecido pelo Governo do Estado de Pernambuco em co
 - Testes unitários 
 
 ### 2. Organização dos exercícios
-- **Estrutura Sequencial:** 
+- **1.Estrutura Sequencial:** 
 
     são exercícios iniciais com a linguagem python, no qual cada instrução de um programa é executado em sequência.
+
+
+- **7.Exercícios com Arquivos:** 
+
+  exercícios que abordam a manipulação de arquivos de texto.
+
+
+- **8.Classes:** 
+
+  exercícios que abordam o assunto sobre Classes e conceitos de programação orientada a objetos.
+
+
+- **9.Iteradores e Funções Geradoras:** 
+
+  exercícios que abordam o assunto sobre iteradores e funções geradoras, como *yield, iter()* e *next()*.
+
+
+- **10.Decoradores:** 
+
+  exercícios que abordam o assunto sobre *decorator*, *higher order functions* e *closures*.
+
+
+### 3. Projeto Final
+ Na diretório *16.Projeto Final* contém o projeto criado para o encerramento do curso de Python Caça Talentos.
+
+
