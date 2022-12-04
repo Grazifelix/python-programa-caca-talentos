@@ -7,18 +7,19 @@ import math
 import pygame as pg
 from controller import controller_gerenciador_de_arquivos
 
+# inicializando tela principal
+pg.init()
+window = pg.display.set_mode((800, 600))
+pg.display.set_caption('Sudoku', 'Sudoku')
+
+# inicializando fontes
+pg.font.init()
+font = pg.font.SysFont('arial', 45)
+
 # Cores utilizadas
 background_color = (14, 17, 23, 17)
 roxo_escuro = (73, 88, 173, 68)
 roxo_claro = (105, 127, 250, 98)
-
-# inicializando tela principal
-pg.init()
-window = pg.display.set_mode((800, 700))
-
-# inicializando fontes
-pg.font.init()
-font = pg.font.SysFont('arial', 50, italic=True)
 
 # variaveis utilizadas
 click_last_status = False
@@ -63,11 +64,50 @@ def quadrado_selecionado(window, mouse_position_x, mouse_position_y, click_last_
     return x, y
 
 
-def restart_button(window):
-    pg.draw.rect(window, roxo_claro, (520, 40, 200, 80))
-    word = font.render('Reniciar', True, background_color)
-    window.blit(word, (525, 50))
+class Button:
+    def __init__(self, text_input, font_position_x, font_position_y, font_color, left, top, width, height,  fill):
+        self.left = left
+        self.top = top
+        self.width = width
+        self.height = height
+        self.font_color = font_color
+        self.text_input = text_input
+        self.font_position_x = font_position_x
+        self.font_position_y = font_position_y
+        self.fill = fill
+        self.text = font.render(self.text_input, True, self.font_color)
+        self.pressed = False
 
+    def update(self):
+        pg.draw.rect(window, roxo_escuro, (self.left + 5, self.top + 5, self.width, self.height), self.fill)
+        pg.draw.rect(window, roxo_claro, (self.left, self.top, self.width, self.height), self.fill)
+        window.blit(self.text, (self.font_position_x, self.font_position_y))
+
+    def hover(self, position):
+        if position[0] in range(self.left, (self.left+self.width)) and position[1] in range(self.top, (self.top+self.height)):
+            pg.draw.rect(window, roxo_claro, (self.left, self.top, self.width, self.height))
+            self.text = font.render(self.text_input, True, background_color)
+            window.blit(self.text, (self.font_position_x, self.font_position_y))
+
+        else:
+            pg.draw.rect(window, roxo_claro, (self.left, self.top, self.width, self.height), self.fill)
+            self.text = font.render(self.text_input, True, self.font_color)
+
+    def check_click(self, position, function):
+        if position[0] in range(self.left, (self.left + self.width)) and position[1] in range(self.top,(self.top + self.height)):
+            if pg.mouse.get_pressed()[0]:
+                pg.draw.rect(window, roxo_claro, (self.left, self.top, self.width, self.height), self.fill)
+                self.pressed = True
+            else:
+                if self.pressed:
+                    pg.draw.rect(window, roxo_claro, (self.left, self.top, self.width, self.height), self.fill)
+                    function()
+                    self.pressed = False
+
+# Botões
+button_restart = Button('Reniciar', 540, 50, roxo_claro, 520, 40, 300, 80, 3)
+button_add_file = Button('Adicionar', 535, 150, roxo_claro, 520, 140, 300, 80, 3)
+button_solve = Button('Resolver', 535, 250, roxo_claro, 520, 240, 300, 80, 3)
 
 running = True
 while running:
@@ -96,7 +136,13 @@ while running:
     tabuleiro_hover(window, mouse_position_x, mouse_position_y)
     click_position_x, click_position_y = quadrado_selecionado(window, mouse_position_x, mouse_position_y, click_last_status, click[0], click_position_x, click_position_y)
     tabuleiro_sudoku(window)
-    restart_button(window)
+    button_restart.update()
+    button_restart.hover(mouse)
+    button_add_file.update()
+    button_add_file.hover(mouse)
+    button_add_file.check_click(mouse, controller_gerenciador_de_arquivos.abrindo_arquivo)
+    button_solve.update()
+    button_solve.hover(mouse)
 
     # click_last_status
     if click[0] == True:
@@ -104,7 +150,6 @@ while running:
     else:
         click_last_status = False
 
-    pg.draw.rect(window, roxo_claro, pg.Rect(30, 510, 100, 50), 2)
     pg.display.flip()
 
 pg.quit()
