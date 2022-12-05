@@ -22,9 +22,10 @@ def abrindo_arquivo():
     for a in arquivo_sudoku:
         lista = []
         for j in a:
-            if j != '\n' and j != '[' and j != ']' and j != ',' and j != ' ':
+            if j != '\n' and j != '[' and j != ']' and j != ',' and j != '0':
                 lista.append(int(j))
-
+            elif j == '0' or j == 0:
+                lista.append('n')
         sudoku.append(lista)
     print(sudoku)
     return sudoku
