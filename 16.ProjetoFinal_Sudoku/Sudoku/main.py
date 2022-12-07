@@ -8,24 +8,26 @@ import random
 import sys
 
 import pygame as pg
-from src.controller import controller_gerenciador_de_arquivos
 import constants as const
 from src.components import button
+from src.user_data import controller_user_data
+
 
 # inicializando tela principal
 pg.init()
 window = pg.display.set_mode(const.DISPLAY_SIZE)
-pg.display.set_caption(const.DISPLAY_NAME)
+
 
 # inicializando fontes
 pg.font.init()
 font = pg.font.SysFont(const.FONT['name'], const.FONT['size'])
 
-
-
-
+# Lendo data
+controller_user_data.read_user_data()
 
 def play():
+    pg.display.set_caption(const.DISPLAY_NAME)
+
     # variaveis utilizadas
     escondendo_numeros = True
     tabuleiro_preenchido = True
@@ -110,10 +112,9 @@ def play():
     # Botões
     button_restart = button.ButtonRestart('Reniciar', 540, 50, const.CORES['roxo_claro'], font, window, 520, 40, 300,
                                           80, 3, const.CORES['roxo_claro'], const.CORES['roxo_escuro'])
-    button_add_file = button.ButtonAddFile('Adicionar', 535, 150, const.CORES['roxo_claro'], font, window, 520, 140,
+
+    button_back = button.ButtonMenu('Voltar ao menu', 535, 150, const.CORES['roxo_claro'], font, window, 520, 140,
                                            300, 80, 3, const.CORES['roxo_claro'], const.CORES['roxo_escuro'])
-    button_solve = button.ButtonSolve('Voltar ao menu', 535, 250, const.CORES['roxo_claro'], font, window, 520, 240, 300, 80,
-                                      3, const.CORES['roxo_claro'], const.CORES['roxo_escuro'])
 
     # retorna a linha y do tabuleiro_data
     def linha_escolhida(tabuleiro_data, y):
@@ -198,7 +199,7 @@ def play():
             # passado no tabuleiro completo e o numero maximo do quadrante
             x = random.randint(x2, x2 + 2)
             y = random.randint(y2, y2 + 2)
-            # retorna a linha y do tabuleiro data
+            # retorna a linha y do tabuleiro user_data
             linha_sorteada = linha_escolhida(tabuleiro_data, y)
 
             # retorna a coluna referente a posição x
@@ -387,7 +388,7 @@ def play():
             elif event.type == pg.MOUSEBUTTONDOWN:
                 if button_restart.check_click(mouse):
                     print('ola')
-                if button_solve.check_click(mouse):
+                if button_back.check_click(mouse):
                     menu(window)
 
 
@@ -396,20 +397,18 @@ def play():
         click_position_x, click_position_y = quadrado_selecionado(window, mouse_position_x, mouse_position_y,
                                                                   click_last_status, click[0], click_position_x,
                                                                   click_position_y)
+
+        # Mostrando linhas do tabuleiro na tela
         tabuleiro_sudoku(window)
+
         # botão restart
         button_restart.update()
         button_restart.hover(mouse)
 
-        # botão add file
-        button_add_file.update()
-        button_add_file.hover(mouse)
-        button_add_file.action(mouse, controller_gerenciador_de_arquivos.abrindo_arquivo)
-
-        # botao solve
-        button_solve.update()
-        button_solve.hover(mouse)
-        button_solve.action(mouse)
+        # botao voltar para menu
+        button_back.update()
+        button_back.hover(mouse)
+        button_back.action(mouse)
 
         # tabuleiro
         tabuleiro_data, tabuleiro_preenchido = tabuleiro_completo(tabuleiro_data, tabuleiro_preenchido)
@@ -425,8 +424,7 @@ def play():
                                                                                                     jogo_data,
                                                                                                     restart_tabuleiro_data)
 
-        time_since_enter = pg.time.get_ticks()
-        sec_time = time(time_since_enter)
+        sec_time = time(pg.time.get_ticks())
         draw_time(sec_time)
 
         # click_last_status
@@ -437,8 +435,82 @@ def play():
 
         pg.display.update()
 
+
 def ranking():
     pg.display.set_caption('Ranking')
+    titulos_font = pg.font.SysFont('arial', 30)
+
+    def tabela(window):
+        # linhas horizontais
+        pg.draw.rect(window, const.CORES['roxo_claro'], (70, 180, 660, 350), 3)
+        pg.draw.rect(window, const.CORES['roxo_claro'], (400, 180, 200, 350), 3)
+        # linhas verticais
+        #titulo tabelas
+        pg.draw.rect(window, const.CORES['roxo_claro'], (70, 180, 660, 50), 3)
+        #linha dados
+        pg.draw.rect(window, const.CORES['roxo_claro'], (70, 230, 660, 50), 2)
+        pg.draw.rect(window, const.CORES['roxo_claro'], (70, 280, 660, 50), 2)
+        pg.draw.rect(window, const.CORES['roxo_claro'], (70, 330, 660, 50), 2)
+        pg.draw.rect(window, const.CORES['roxo_claro'], (70, 380, 660, 50), 2)
+        pg.draw.rect(window, const.CORES['roxo_claro'], (70, 430, 660, 50), 2)
+        pg.draw.rect(window, const.CORES['roxo_claro'], (70, 480, 660, 50), 2)
+
+    def titulos_tabela():
+        nome_titulo = titulos_font.render('Nome do Jogador', True, const.CORES['roxo_claro'])
+        titulo_rect = nome_titulo.get_rect(center=(230, 200))
+        window.blit(nome_titulo, titulo_rect)
+
+        data_titulo = titulos_font.render('Data', True, const.CORES['roxo_claro'])
+        data_rect = data_titulo.get_rect(center=(500, 200))
+        window.blit(data_titulo, data_rect)
+
+        tempo_titulo = titulos_font.render('Tempo', True, const.CORES['roxo_claro'])
+        tempo_rect = tempo_titulo.get_rect(center=(655, 200))
+        window.blit(tempo_titulo, tempo_rect)
+
+    def mostrando_dados():
+        ranking_data = controller_user_data.return_data()
+
+        # for d in range(len(ranking_data)):
+        #     a = ranking_data[d]
+        #     print(a['nome'])
+
+
+        nome = titulos_font.render('Nome do Jogador', True, const.CORES['roxo_claro'])
+        titulo_rect = nome.get_rect(center=(230, 200))
+        window.blit(nome, titulo_rect)
+
+
+    while True:
+        window.fill(const.CORES['background_color'])
+
+        # Nome Ranking
+        font_ranking = pg.font.SysFont('arial', 70)
+        ranking_text = font_ranking.render('RANKING', True, const.CORES['roxo_claro'])
+        text_rect = ranking_text.get_rect(center=(200, 80))
+        window.blit(ranking_text, text_rect)
+
+        # > Botão voltar
+        VOLTAR_BUTTON = button.ButtonMenu('Voltar', 540, 50, const.CORES['roxo_claro'], font, window, 520, 40, 300,
+                                          80, 3, const.CORES['roxo_claro'], const.CORES['roxo_escuro'])
+        VOLTAR_BUTTON.update()
+        VOLTAR_BUTTON.hover(pg.mouse.get_pos())
+
+        #RANKING
+        tabela(window)
+        titulos_tabela()
+        mostrando_dados()
+
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                pg.quit()
+                sys.exit()
+            elif event.type == pg.MOUSEBUTTONDOWN:
+                if VOLTAR_BUTTON.check_click(pg.mouse.get_pos()):
+                    menu(window)
+
+
+        pg.display.update()
 
 
 def menu(window):
@@ -462,11 +534,12 @@ def menu(window):
 
         RANKING_BUTTON = button.ButtonMenu('RANKING', 260, 310, const.CORES['roxo_claro'], font, window, 200, 300, 700, 80, 3,
                                         const.CORES['roxo_claro'], const.CORES['roxo_escuro'])
+        EXIT_BUTTON = button.ButtonMenu('SAIR', 260, 410, const.CORES['roxo_claro'], font, window, 200, 400, 700, 80, 3, const.CORES['roxo_claro'], const.CORES['roxo_escuro'])
 
         window.blit(MENU_TEXT, MENU_RECT)
         window.blit(COPYRIGHT_TEXT, COPYRIGHT_RECT)
 
-        for button_menu in [PLAY_BUTTON, RANKING_BUTTON]:
+        for button_menu in [PLAY_BUTTON, RANKING_BUTTON, EXIT_BUTTON]:
             button_menu.update()
             button_menu.hover(mouse)
         # declarando variavel do mouse
@@ -478,6 +551,11 @@ def menu(window):
             elif event.type == pg.MOUSEBUTTONDOWN:
                 if PLAY_BUTTON.check_click(mouse):
                     play()
+                if RANKING_BUTTON.check_click(mouse):
+                    ranking()
+                if EXIT_BUTTON.check_click(mouse):
+                    pg.quit()
+                    sys.exit()
 
         pg.display.update()
 
