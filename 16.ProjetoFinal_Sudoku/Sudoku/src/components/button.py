@@ -70,42 +70,6 @@ class ButtonRestart(Button):
         return tabuleiro_preenchido, escondendo_numeros, tabuleiro_data, jogo_data
 
 
-# CLASSE BUTTON ADD FILE
-class ButtonAddFile(Button):
-    def __init__(self, text_input, font_position_x, font_position_y, font_color, font, screen, left, top, width, height, fill, button_color, shadow_color):
-        super().__init__(text_input, font_position_x, font_position_y, font_color, font, screen, left, top, width, height, fill, button_color, shadow_color)
-
-    def action(self, position, function=None):
-        tabuleiro_file = None
-        if position[0] in range(self.left, (self.left + self.width)) and position[1] in range(self.top, (self.top + self.height)):
-            if pg.mouse.get_pressed()[0]:
-                pg.draw.rect(self.screen, self.button_color, (self.left, self.top, self.width, self.height), self.fill)
-                self.pressed = True
-            else:
-                if self.pressed:
-                    pg.draw.rect(self.screen, self.button_color, (self.left, self.top, self.width, self.height), self.fill)
-                    tabuleiro_file = function()
-                    self.pressed = False
-
-        return tabuleiro_file
-
-
-# CLASSE BUTTON SOLVE
-class ButtonSolve(Button):
-    def __init__(self, text_input, font_position_x, font_position_y, font_color, font, screen, left, top, width, height, fill, button_color, shadow_color):
-        super().__init__(text_input, font_position_x, font_position_y, font_color, font, screen, left, top, width, height, fill, button_color, shadow_color)
-
-    def action(self, position):
-        if position[0] in range(self.left, (self.left + self.width)) and position[1] in range(self.top, (self.top + self.height)):
-            if pg.mouse.get_pressed()[0]:
-                pg.draw.rect(self.screen, self.button_color, (self.left, self.top, self.width, self.height), self.fill)
-                self.pressed = True
-            else:
-                if self.pressed:
-                    pg.draw.rect(self.screen, self.button_color, (self.left, self.top, self.width, self.height), self.fill)
-                    self.pressed = False
-
-
 class ButtonMenu(Button):
     def __init__(self, text_input, font_position_x, font_position_y, font_color, font, screen, left, top, width, height, fill, button_color, shadow_color):
         super().__init__(text_input, font_position_x, font_position_y, font_color, font, screen, left, top, width, height, fill, button_color, shadow_color)
