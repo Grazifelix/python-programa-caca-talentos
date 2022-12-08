@@ -13,6 +13,7 @@ from src.components import button
 from src.game_screens import end_game
 from src.game_screens import ranking
 from src.game_screens import sudoku
+from src.game_screens import difficulty_level
 
 
 # inicializando tela principal
@@ -60,7 +61,7 @@ def menu(window):
                 sys.exit()
             elif event.type == pg.MOUSEBUTTONDOWN:
                 if PLAY_BUTTON.check_click(mouse):
-                    sudoku.play(pg, window, const, font, menu, ranking, end_game)
+                    difficulty_level.diffcult_level(pg, window, font, const, sudoku, menu, ranking, end_game)
                 if RANKING_BUTTON.check_click(mouse):
                     ranking.ranking(pg, window, const, font, menu)
                 if EXIT_BUTTON.check_click(mouse):
