@@ -53,7 +53,6 @@ def menu(window):
         for button_menu in [PLAY_BUTTON, RANKING_BUTTON, EXIT_BUTTON]:
             button_menu.update()
             button_menu.hover(mouse)
-        # declarando variavel do mouse
 
         for event in pg.event.get():
             if event.type == pg.QUIT:
@@ -67,8 +66,6 @@ def menu(window):
                 if EXIT_BUTTON.check_click(mouse):
                     pg.quit()
                     sys.exit()
-            # elif event.type == pg.MOUSEWHEEL:
-            #     end_game.end_game(pg, window, const, font, menu, ranking)
 
         pg.display.update()
 
