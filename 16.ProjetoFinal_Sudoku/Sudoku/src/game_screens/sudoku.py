@@ -325,6 +325,7 @@ def play(pg, window, const, font, menu, ranking, end_game, dificuldade):
             numero = int(numero)
         return numero
 
+    # > verifica se o numero digitado pelo usuário é a resposta correta no tabuleiro
     def checar_numero_digitado(tabuleiro_data, jogo_data, click_x, click_y, numero, jogo_concluido):
         if 0 <= click_x <= 8 and 0 <= click_y <= 8 and tabuleiro_data[click_y][click_x] == numero and \
                 jogo_data[click_y][click_x] == 'n' and numero != 0:
