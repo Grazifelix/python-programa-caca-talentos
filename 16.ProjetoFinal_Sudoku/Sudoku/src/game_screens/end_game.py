@@ -28,10 +28,22 @@ def end_game(pg, window, const, font, menu, ranking, user_data):
                 pg.quit()
                 sys.exit()
             elif event.type == pg.KEYDOWN:
+                letra = pg.key.name(event.key)
                 if len(user_name) < 8:
-                    letra = pg.key.name(event.key)
-                    letra = mostrar_digitos(letra)
-                    user_name = user_name + letra
+                    if event.key == pg.K_SPACE:
+                        letra = ' '
+                        letra = mostrar_digitos(letra)
+                        user_name = user_name + letra
+                    elif event.key == pg.K_BACKSPACE:
+                        user_name = user_name[0:len(user_name)-1]
+                    elif event.key == pg.K_RETURN:
+                        pass
+                    else:
+                        letra = mostrar_digitos(letra)
+                        user_name = user_name + letra
+                else:
+                    if event.key == pg.K_BACKSPACE:
+                        user_name = user_name[0:len(user_name)-1]
             elif event.type == pg.MOUSEBUTTONDOWN:
                 if BUTTON_OK.check_click(pg.mouse.get_pos()):
                     # Atualizando arquivo json com os novos dados
