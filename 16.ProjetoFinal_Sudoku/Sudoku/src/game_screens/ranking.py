@@ -3,15 +3,11 @@ from ..components import button
 from ..user_data import controller_user_data
 
 # Lendo data
-controller_user_data.read_user_data()
+controller_user_data.convert_json_data_to_object()
 
 
-def ranking(pg, window, const, font, menu, user_data=None):
-    # Atualizando arquivo json com os novos dados
-    # produzidos pelo usuario ao finalizar o jogo
-    if user_data != None:
-        controller_user_data.update_user_data(user_data)
-        controller_user_data.read_user_data()
+def ranking(pg, window, const, font, menu):
+
 
     # titulo da tela
     pg.display.set_caption('Ranking')
@@ -46,7 +42,9 @@ def ranking(pg, window, const, font, menu, user_data=None):
         window.blit(tempo_titulo, tempo_rect)
 
     def mostrando_dados():
+
         ranking_data = controller_user_data.return_data()
+
 
         cont_nome_padding = 0
         cont_data_padding = 0
