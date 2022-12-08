@@ -1,6 +1,6 @@
 import sys
 from ..components import button
-
+from ..user_data import controller_user_data
 
 def end_game(pg, window, const, font, menu, ranking, user_data):
 
@@ -34,8 +34,12 @@ def end_game(pg, window, const, font, menu, ranking, user_data):
                     user_name = user_name + letra
             elif event.type == pg.MOUSEBUTTONDOWN:
                 if BUTTON_OK.check_click(pg.mouse.get_pos()):
+                    # Atualizando arquivo json com os novos dados
+                    # produzidos pelo usuario ao finalizar o jogo
                     user_data['nome'] = user_name
-                    ranking.ranking(pg, window, const, font, menu, user_data)
+                    controller_user_data.update_user_data(user_data)
+                    controller_user_data.append_new_data_in_list(user_data)
+                    ranking.ranking(pg, window, const, font, menu)
 
         window.fill(const.CORES['background_color'])
         input_name()
