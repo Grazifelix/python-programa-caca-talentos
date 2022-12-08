@@ -6,7 +6,7 @@ import datetime
 from ..components import button
 
 
-def play(pg, window, const, font, menu, ranking, end_game):
+def play(pg, window, const, font, menu, ranking, end_game, dificuldade):
     pg.display.set_caption(const.DISPLAY_NAME)
 
     # variaveis utilizadas
@@ -286,9 +286,9 @@ def play(pg, window, const, font, menu, ranking, end_game):
     # Adiciona alguns numeros do tabuleiro_data ao jogo_data de forma a deixar espaços em branco
     # :parametros: matrizes tabuleiro_data e jogo_data/ variável booleana escondendo_numeros
     # :return: matriz jogo_data preenchido e variável booleana escondendo_numeros False
-    def esconder_numeros(tabuleiro_data, jogo_data, escondendo_numeros, jogo_concluido):
+    def esconder_numeros(tabuleiro_data, jogo_data, escondendo_numeros, jogo_concluido, dificuldade_nivel):
         if escondendo_numeros == True:
-            dificuldade = 80
+            dificuldade = dificuldade_nivel
             for i in range(dificuldade):
                 sortear_numero = True
                 while sortear_numero == True:
@@ -415,7 +415,7 @@ def play(pg, window, const, font, menu, ranking, end_game):
 
         # tabuleiro
         tabuleiro_data, tabuleiro_preenchido = tabuleiro_completo(tabuleiro_data, tabuleiro_preenchido)
-        jogo_data, escondendo_numeros, jogo_concluido = esconder_numeros(tabuleiro_data, jogo_data, escondendo_numeros, jogo_concluido)
+        jogo_data, escondendo_numeros, jogo_concluido = esconder_numeros(tabuleiro_data, jogo_data, escondendo_numeros, jogo_concluido, dificuldade)
         escrever_numeros(window, jogo_data)
         numero = numero_digitado(numero)
         jogo_data, numero, jogo_concluido = checar_numero_digitado(tabuleiro_data, jogo_data, click_position_x, click_position_y,
