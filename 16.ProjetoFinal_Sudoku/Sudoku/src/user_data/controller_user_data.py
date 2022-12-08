@@ -31,9 +31,16 @@ def write_json(new_data):
 def return_data():
     return lista_user
 
+# inserindo um unico novo elemento a lista de objetos
+def append_new_data_in_list(new_data):
+    new_data = User(new_data["nome"], new_data["data"], new_data["tempo"])
+    if len(lista_user) == 6:
+        lista_user.remove(lista_user[0])
+    lista_user.append(new_data)
+
 
 # Lendo dados do json e os transformando em objetos da classe User
-def read_user_data():
+def convert_json_data_to_object():
     data = open_json()
     for i in data:
         user = User(i["nome"], i["data"], i["tempo"])
