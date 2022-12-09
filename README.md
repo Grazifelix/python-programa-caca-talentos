@@ -66,8 +66,8 @@ Um programa de curso python oferecido pelo Governo do Estado de Pernambuco em co
 
 *Primeira tela do jogo, onde o usuário pode escolher entre jogar, ver o ranking ou sair do jogo*
 <div align="center">
-    <img source="https://user-images.githubusercontent.com/63428197/206769107-eb65fd75-e46e-41ff-aded-565dfd5bad87.png" width="500px"/>
- </div>
+<img src="https://user-images.githubusercontent.com/63428197/206769107-eb65fd75-e46e-41ff-aded-565dfd5bad87.png" width="500px"/>
+</div>
  
 ![menu](https://user-images.githubusercontent.com/63428197/206769107-eb65fd75-e46e-41ff-aded-565dfd5bad87.png)
 
