@@ -41,6 +41,19 @@ def play(pg, window, const, font, menu, ranking, end_game, dificuldade):
                  ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
                  ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n']]
 
+    # o tabuleiro que servira como controle da matriz jogo_data,
+    # para que seja possivel vizualizar qualquer numero digitado pelo usuario
+    jogo_data_control = [['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+                 ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+                 ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+                 ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+                 ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+                 ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+                 ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+                 ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
+                 ['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n']]
+
+
     # retorna um tabuleiro vazio
     def restart_tabuleiro_data():
         tabuleiro_data = [['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
@@ -287,7 +300,7 @@ def play(pg, window, const, font, menu, ranking, end_game, dificuldade):
     # Adiciona alguns numeros do tabuleiro_data ao jogo_data de forma a deixar espaços em branco
     # :parametros: matrizes tabuleiro_data e jogo_data/ variável booleana escondendo_numeros
     # :return: matriz jogo_data preenchido e variável booleana escondendo_numeros False
-    def esconder_numeros(tabuleiro_data, jogo_data, escondendo_numeros, jogo_concluido, dificuldade_nivel):
+    def esconder_numeros(tabuleiro_data, jogo_data, jogo_data_control, escondendo_numeros, jogo_concluido, dificuldade_nivel):
         if escondendo_numeros == True:
             dificuldade = dificuldade_nivel
             for i in range(dificuldade):
@@ -297,6 +310,7 @@ def play(pg, window, const, font, menu, ranking, end_game, dificuldade):
                     y = random.randint(0, 8)
                     if jogo_data[y][x] == 'n':
                         jogo_data[y][x] = tabuleiro_data[y][x]
+                        jogo_data_control[y][x] = 'x'
                         sortear_numero = False
                 escondendo_numeros = False
             jogo_concluido = dificuldade
@@ -311,7 +325,7 @@ def play(pg, window, const, font, menu, ranking, end_game, dificuldade):
                 if jogo_data[i][j] != 'n':
                     number = font.render(str(jogo_data[i][j]), True, const.CORES['roxo_claro'])
                     window.blit(number, (ajuste + j * quadrado + 13, ajuste + i * quadrado))
-                    if jogo_data[i][j] == 'X':
+                    if jogo_data[i][j] != tabuleiro_data[i][j]:
                         number = font.render(str(jogo_data[i][j]), True, 'white')
                         window.blit(number, (ajuste + j * quadrado + 13, ajuste + i * quadrado))
 
@@ -327,20 +341,39 @@ def play(pg, window, const, font, menu, ranking, end_game, dificuldade):
         return numero
 
     # > verifica se o numero digitado pelo usuário é a resposta correta no tabuleiro
-    def checar_numero_digitado(tabuleiro_data, jogo_data, click_x, click_y, numero, jogo_concluido):
+    def checar_numero_digitado(tabuleiro_data, jogo_data, jogo_data_control, click_x, click_y, numero, jogo_concluido):
         if 0 <= click_x <= 8 and 0 <= click_y <= 8 and tabuleiro_data[click_y][click_x] == numero and \
                 jogo_data[click_y][click_x] == 'n' and numero != 0:
             jogo_data[click_y][click_x] = numero
+            jogo_data_control[click_y][click_x] = 'X'
             numero = 0
             jogo_concluido += 1
+
         if 0 <= click_x <= 8 and 0 <= click_y <= 8 and tabuleiro_data[click_y][click_x] == numero and \
-                jogo_data[click_y][click_x] == numero and numero != 0:
+                jogo_data[click_y][click_x] == numero and numero != 0 and jogo_data_control[click_y][click_x] == 'X':
             pass
         if 0 <= click_x <= 8 and 0 <= click_y <= 8 and tabuleiro_data[click_y][click_x] != numero and \
+                jogo_data[click_y][click_x] == numero and numero != 0 and jogo_data_control[click_y][click_x] == 'x':
+            pass
+
+        if 0 <= click_x <= 8 and 0 <= click_y <= 8 and tabuleiro_data[click_y][click_x] != numero and \
                 jogo_data[click_y][click_x] == 'n' and numero != 0:
-            jogo_data[click_y][click_x] = 'X'
+            jogo_data[click_y][click_x] = numero
+
+
+        if 0 <= click_x <= 8 and 0 <= click_y <= 8 and tabuleiro_data[click_y][click_x] != numero and \
+                jogo_data[click_y][click_x] != 'n' and numero != 0 and jogo_data_control[click_y][click_x] != 'x':
+            jogo_data[click_y][click_x] = numero
+
+
         if 0 <= click_x <= 8 and 0 <= click_y <= 8 and tabuleiro_data[click_y][click_x] == numero and \
-                jogo_data[click_y][click_x] == 'X' and numero != 0:
+                jogo_data[click_y][click_x] != 'n' and jogo_data_control[click_y][click_x] != 'x' and jogo_data_control[click_y][click_x] == 'X' and numero != 0:
+            jogo_data[click_y][click_x] = numero
+
+
+        if 0 <= click_x <= 8 and 0 <= click_y <= 8 and tabuleiro_data[click_y][click_x] == numero and \
+                jogo_data[click_y][click_x] != 'n' and jogo_data_control[click_y][click_x] != 'x' and jogo_data_control[click_y][click_x] != 'X' and numero != 0:
+            jogo_data_control[click_y][click_x] = 'X'
             jogo_data[click_y][click_x] = numero
             numero = 0
             jogo_concluido += 1
@@ -416,10 +449,10 @@ def play(pg, window, const, font, menu, ranking, end_game, dificuldade):
 
         # tabuleiro
         tabuleiro_data, tabuleiro_preenchido = tabuleiro_completo(tabuleiro_data, tabuleiro_preenchido)
-        jogo_data, escondendo_numeros, jogo_concluido = esconder_numeros(tabuleiro_data, jogo_data, escondendo_numeros, jogo_concluido, dificuldade)
+        jogo_data, escondendo_numeros, jogo_concluido = esconder_numeros(tabuleiro_data, jogo_data, jogo_data_control, escondendo_numeros, jogo_concluido, dificuldade)
         escrever_numeros(window, jogo_data)
         numero = numero_digitado(numero)
-        jogo_data, numero, jogo_concluido = checar_numero_digitado(tabuleiro_data, jogo_data, click_position_x, click_position_y,
+        jogo_data, numero, jogo_concluido = checar_numero_digitado(tabuleiro_data, jogo_data, jogo_data_control, click_position_x, click_position_y,
                                                    numero, jogo_concluido)
         tabuleiro_preenchido, escondendo_numeros, tabuleiro_data, jogo_data = button_restart.action(mouse,
                                                                                                     tabuleiro_preenchido,
