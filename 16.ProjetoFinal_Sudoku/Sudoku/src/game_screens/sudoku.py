@@ -4,7 +4,7 @@ import sys
 import datetime
 
 from ..components import button
-
+from ..components import timer
 
 def play(pg, window, const, font, menu, ranking, end_game, dificuldade):
     pg.display.set_caption(const.DISPLAY_NAME)
@@ -17,6 +17,7 @@ def play(pg, window, const, font, menu, ranking, end_game, dificuldade):
     click_position_y = -1
     numero = 0
     jogo_concluido = 0
+    game_time = timer.Timer()
 
     # o tabuleiro que será usado para comparar as respostas com o jogo_data
     tabuleiro_data = [['n', 'n', 'n', 'n', 'n', 'n', 'n', 'n', 'n'],
@@ -355,24 +356,23 @@ def play(pg, window, const, font, menu, ranking, end_game, dificuldade):
             user_data = {
                 'nome': '',
                 'data': data,
-                'tempo': f"{int(tempo)}s",
+                'tempo': f"{tempo}",
             }
 
             end_game.end_game(pg, window, const, font, menu, ranking, user_data)
 
     # TEMPO DE JOGO
     # tranformando milisegundos em segundos
-    def time(game_time):
-        sec_time = game_time / 1000
+    def time(hora, min, sec):
+        game_time = f'{hora}h:{min}m:{sec}s'
 
-        return sec_time
+        return game_time
 
     # Representando o tempo na tela
-    def draw_time(sec_time):
-        font_time = pg.font.SysFont('arial', 60)
-        sec_time = f"Tempo: {int(sec_time)}s"
-        time_number = font.render(sec_time, True, const.CORES['roxo_claro'])
-        window.blit(time_number, (520, 340))
+    def draw_time(game_time):
+        font_timer = pg.font.SysFont('arial', 40)
+        time_number = font_timer.render(f"Tempo: {game_time}", True, const.CORES['roxo_claro'])
+        window.blit(time_number, (523, 340))
 
     while True:
         # Posicao do mouse
@@ -429,11 +429,13 @@ def play(pg, window, const, font, menu, ranking, end_game, dificuldade):
                                                                                                     restart_tabuleiro_data)
 
         # TIMER
-        sec_time = time(pg.time.get_ticks())
-        draw_time(sec_time)
+        #sec_time = time(pg.time.get_ticks())
+        hora, min, sec = game_time.timer()
+        time_of_game = time(hora, min, sec)
+        draw_time(time_of_game)
 
         # Verificar se o tabuleiro foi concluido
-        verifica_jogo_concluido(jogo_concluido, sec_time)
+        verifica_jogo_concluido(jogo_concluido, time_of_game)
 
         # click_last_status
         if click[0] == True:

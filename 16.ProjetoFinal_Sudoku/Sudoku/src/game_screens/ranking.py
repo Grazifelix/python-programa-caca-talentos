@@ -57,7 +57,7 @@ def ranking(pg, window, const, font, menu):
             window.blit(data, (440, 235 + cont_data_padding))
 
             tempo = titulos_font.render(ranking_data[i].tempo, True, const.CORES['roxo_claro'])
-            window.blit(tempo, (640, 235 + cont_tempo_padding))
+            window.blit(tempo, (610, 235 + cont_tempo_padding))
 
             cont_nome_padding += 50
             cont_data_padding += 50
