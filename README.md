@@ -69,11 +69,14 @@ Um programa de curso python oferecido pelo Governo do Estado de Pernambuco em co
 <img src="https://user-images.githubusercontent.com/63428197/206769107-eb65fd75-e46e-41ff-aded-565dfd5bad87.png" width="500px"/>
 </div>
  
-![menu](https://user-images.githubusercontent.com/63428197/206769107-eb65fd75-e46e-41ff-aded-565dfd5bad87.png)
 
 ***- Nivel:***
 
 *Tela onde o usuário pode escolher entre três níveis de dificuldade*
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/63428197/206770164-7117dbae-8548-434e-bc92-8a45acb6e619.png" width="500px"/>
+</div>
 ![level](https://user-images.githubusercontent.com/63428197/206770164-7117dbae-8548-434e-bc92-8a45acb6e619.png)
 
 ***- Sudoku:***
