@@ -15,10 +15,10 @@ class Timer:
     def timer(self):
         value = self.get()
         sec = int(value)
-        min = int(sec/10)
-        hour = int(min / 10)
-        sec -= min * 10
-        min -= hour*10
+        min = int(sec/60)
+        hour = int(min / 60)
+        sec -= min * 60
+        min -= hour*60
 
         return hour, min, sec
 
