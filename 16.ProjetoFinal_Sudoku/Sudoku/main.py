@@ -1,4 +1,4 @@
-# Este projeto é um Sudoku Solver (Resolvedor de Sudoku)
+# Este projeto é um Game Sudoku
 # Inicio: 01/12/22
 # Graziela Maria
 
