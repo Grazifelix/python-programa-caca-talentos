@@ -57,5 +57,9 @@ Um programa de curso python oferecido pelo Governo do Estado de Pernambuco em co
 
 ### 3. Projeto Final
  Na diretório *16.Projeto Final* contém o projeto criado para o encerramento do curso de Python Caça Talentos.
-
+ 
+ **Jogo Susoku**
+ Escolhi criar um jogo sudoku para este projeto final utilizando os conceitos aprendidos no decorrer do curso mais a biblioteca pygame para fazer a parte visual.
+ 
+![menu](https://user-images.githubusercontent.com/63428197/206769107-eb65fd75-e46e-41ff-aded-565dfd5bad87.png)
 
