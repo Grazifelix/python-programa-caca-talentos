@@ -77,19 +77,32 @@ Um programa de curso python oferecido pelo Governo do Estado de Pernambuco em co
 <div align="center">
 <img src="https://user-images.githubusercontent.com/63428197/206770164-7117dbae-8548-434e-bc92-8a45acb6e619.png" width="500px"/>
 </div>
-![level](https://user-images.githubusercontent.com/63428197/206770164-7117dbae-8548-434e-bc92-8a45acb6e619.png)
+
 
 ***- Sudoku:***
 
 *Tela do jogo, onde o usuário pode escolher reniciar o jogo com um novo tabuleiro ou voltar ao menu. Também é contabilizado o tempo de jogo.*
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/63428197/206770305-994f11f9-64c5-46cb-a548-89cd41395c1d.png" width="500px"/>
+</div>
+
 ![sudoku_game](https://user-images.githubusercontent.com/63428197/206770305-994f11f9-64c5-46cb-a548-89cd41395c1d.png)
 
 ***- Nome do Jogador***
 
 *Ao finalizar o tabuleiro, o usuário é redirecionado a tela onde ele pode colocar um nome que será salvo no ranking. O botão 'Ok' levará o usuário a tela de ranking.*
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/63428197/206771688-c04d76e7-0f80-4a3e-8941-636040fc1cbb.png" width="500px"/>
+</div>
 ![nome](https://user-images.githubusercontent.com/63428197/206771688-c04d76e7-0f80-4a3e-8941-636040fc1cbb.png)
 
 ***- Ranking:***
 
 *Esta tela mostra um ranking com informações de jogos anteriores do usuário. O máximo de linha desse ranking é igual a seis. Desse modo, as informações antigas vão sendo substituídas por novas. Por fim, o usuário pode voltar ao menu.*
+
+<div align="center">
+<img src="https://user-images.githubusercontent.com/63428197/206770410-537ee4f9-1577-4986-8949-5dcfe3aba379.png" width="500px"/>
+</div>
 ![ranking](https://user-images.githubusercontent.com/63428197/206770410-537ee4f9-1577-4986-8949-5dcfe3aba379.png)
