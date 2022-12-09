@@ -87,7 +87,7 @@ Um programa de curso python oferecido pelo Governo do Estado de Pernambuco em co
 <img src="https://user-images.githubusercontent.com/63428197/206770305-994f11f9-64c5-46cb-a548-89cd41395c1d.png" width="500px"/>
 </div>
 
-![sudoku_game](https://user-images.githubusercontent.com/63428197/206770305-994f11f9-64c5-46cb-a548-89cd41395c1d.png)
+
 
 ***- Nome do Jogador***
 
@@ -96,7 +96,7 @@ Um programa de curso python oferecido pelo Governo do Estado de Pernambuco em co
 <div align="center">
 <img src="https://user-images.githubusercontent.com/63428197/206771688-c04d76e7-0f80-4a3e-8941-636040fc1cbb.png" width="500px"/>
 </div>
-![nome](https://user-images.githubusercontent.com/63428197/206771688-c04d76e7-0f80-4a3e-8941-636040fc1cbb.png)
+
 
 ***- Ranking:***
 
@@ -105,4 +105,4 @@ Um programa de curso python oferecido pelo Governo do Estado de Pernambuco em co
 <div align="center">
 <img src="https://user-images.githubusercontent.com/63428197/206770410-537ee4f9-1577-4986-8949-5dcfe3aba379.png" width="500px"/>
 </div>
-![ranking](https://user-images.githubusercontent.com/63428197/206770410-537ee4f9-1577-4986-8949-5dcfe3aba379.png)
+
