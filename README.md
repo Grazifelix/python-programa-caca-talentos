@@ -58,8 +58,31 @@ Um programa de curso python oferecido pelo Governo do Estado de Pernambuco em co
 ### 3. Projeto Final
  Na diretório *16.Projeto Final* contém o projeto criado para o encerramento do curso de Python Caça Talentos.
  
- **Jogo Susoku**
+ **Jogo Sudoku**
+
  Escolhi criar um jogo sudoku para este projeto final utilizando os conceitos aprendidos no decorrer do curso mais a biblioteca pygame para fazer a parte visual.
- 
+
+***- Menu:***
+
+*Primeira tela do jogo, onde o usuário pode escolher entre jogar, ver o ranking ou sair do jogo*
 ![menu](https://user-images.githubusercontent.com/63428197/206769107-eb65fd75-e46e-41ff-aded-565dfd5bad87.png)
 
+***- Nivel:***
+
+*Tela onde o usuário pode escolher entre três níveis de dificuldade*
+![level](https://user-images.githubusercontent.com/63428197/206770164-7117dbae-8548-434e-bc92-8a45acb6e619.png)
+
+***- Sudoku:***
+
+*Tela do jogo, onde o usuário pode escolher reniciar o jogo com um novo tabuleiro ou voltar ao menu. Também é contabilizado o tempo de jogo.*
+![sudoku_game](https://user-images.githubusercontent.com/63428197/206770305-994f11f9-64c5-46cb-a548-89cd41395c1d.png)
+
+***- Nome do Jogador***
+
+*Ao finalizar o tabuleiro, o usuário é redirecionado a tela onde ele pode colocar um nome que será salvo no ranking. O botão 'Ok' levará o usuário a tela de ranking.*
+![nome](https://user-images.githubusercontent.com/63428197/206771688-c04d76e7-0f80-4a3e-8941-636040fc1cbb.png)
+
+***- Ranking:***
+
+*Esta tela mostra um ranking com informações de jogos anteriores do usuário. O máximo de linha desse ranking é igual a seis. Desse modo, as informações antigas vão sendo substituídas por novas. Por fim, o usuário pode voltar ao menu.*
+![ranking](https://user-images.githubusercontent.com/63428197/206770410-537ee4f9-1577-4986-8949-5dcfe3aba379.png)
