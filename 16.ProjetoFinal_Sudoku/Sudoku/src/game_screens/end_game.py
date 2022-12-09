@@ -57,9 +57,13 @@ def end_game(pg, window, const, font, menu, ranking, user_data):
         input_name()
 
         # Titulo
-        font_ranking = pg.font.SysFont('arial', 70)
-        ranking_text = font_ranking.render('INSIRA SEU NOME:', True, const.CORES['roxo_claro'])
-        text_rect = ranking_text.get_rect(center=(400, 100))
+        font_ranking = pg.font.SysFont('arial', 50)
+        congratulations_text = font_ranking.render('PARABÉNS! VOCÊ CONSEGUIU!', True, const.CORES['roxo_claro'])
+        congratulations_rect = congratulations_text.get_rect(center=(400, 100))
+        window.blit(congratulations_text, congratulations_rect)
+
+        ranking_text = font_ranking.render('Insira seu nome abaixo:', True, const.CORES['roxo_claro'])
+        text_rect = ranking_text.get_rect(center=(400, 200))
         window.blit(ranking_text, text_rect)
 
         # Botão Ok
