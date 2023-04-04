@@ -6,6 +6,8 @@
 # Depois, deve criar um objeto com as medidas e calcular a
 # quantidade de pisos e de rodapés necessárias para o local.
 
+import os
+
 class Retangulo:
     def __init__(self, base, altura):
         self.base = base
@@ -32,13 +34,6 @@ class Retangulo:
     def __str__(self):
         return f"Retangulo\n Base: {self.base}\n Altura: {self.altura}\n Perimetro: {self.get_perimetro()}\n Area: {self.get_area()}"
 
-
-retangulo = Retangulo(12, 20)
-print(retangulo)
-retangulo.change_base(20)
-retangulo.change_altura(40)
-retangulo.show_base()
-retangulo.show_altura()
 
 def print_piso(local, piso):
     # quantidade de pisos para o local
@@ -78,6 +73,8 @@ while True:
     if res == 'n':
 
         break
+    else:
+        os.system("cls")
 
     print('Deseja mudar as medidas do local? [s/n]')
     option = input()

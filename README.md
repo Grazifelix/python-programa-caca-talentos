@@ -54,6 +54,10 @@ Um programa de curso python oferecido pelo Governo do Estado de Pernambuco em co
 
   exercícios que abordam o assunto sobre *decorator*, *higher order functions* e *closures*.
 
+- **13.DataHora:**
+ 
+  exercicios sobre os modulos de data e hora do python.
+
 
 ### 3. Projeto Final
  Na diretório *16.Projeto Final* contém o projeto criado para o encerramento do curso de Python Caça Talentos.
