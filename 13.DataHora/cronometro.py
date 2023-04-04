@@ -15,10 +15,10 @@ class Timer:
     def __str__(self):
         value = self.get()
         sec = int(value)
-        min = int(sec/10)
-        hour = int(min / 10)
-        sec -= min * 10
-        min -= hour*10
+        min = int(sec/60)
+        hour = int(min / 60)
+        sec -= min * 60
+        min -= hour*60
 
         return str(f"{hour}:{min}:{sec}")
 
@@ -26,6 +26,4 @@ class Timer:
 t = Timer()
 
 while True:
-    if t.get() > 5.0:
-        t.reset()
     print(t)
