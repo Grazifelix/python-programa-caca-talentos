@@ -34,3 +34,21 @@ Command to run a django project
 Command to create an app
 
           🔴 python manage.py startapp register
+
+Django bootstrap 5 installation
+
+          🔴 pip install django-bootstrap-v5
+
+Django Rest Framework installation
+
+          🔴 pip install djangorestframework
+
+          or 
+
+          🔴 python -m pip install djangorestframework
+
+
+Command to create the api
+
+          🔴 python manage.py startapp rest_api
+
