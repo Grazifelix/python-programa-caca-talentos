@@ -52,3 +52,5 @@ Command to create the api
 
           🔴 python manage.py startapp rest_api
 
+Command to create a token
+          🔴 python manage.py create_token --username Name --password Password
