@@ -1,5 +1,9 @@
-# Python Programa Caça Talentos 2022
-Um programa de curso python oferecido pelo Governo do Estado de Pernambuco em conjunto com a Adm&amp;Tec - Instituto de Administração e Tecnologia.
+# 🐍 Python Programa Caça Talentos 2022 🐍
+### Um programa de curso python oferecido pelo Governo do Estado de Pernambuco em conjunto com a Adm&amp;Tec - Instituto de Administração e Tecnologia.
+
+#### 🚀 _Este é um repositório central voltado para estudos de python. Para mais informações veja o final desse arquivo._
+
+##
 ### 1. Assuntos abordados no curso
 - Variáveis
 - Comentários
@@ -29,6 +33,7 @@ Um programa de curso python oferecido pelo Governo do Estado de Pernambuco em co
 - Gerenciamento de memoria 
 - Testes unitários 
 
+##
 ### 2. Organização dos exercícios
 - **1.Estrutura Sequencial:** 
 
@@ -58,7 +63,7 @@ Um programa de curso python oferecido pelo Governo do Estado de Pernambuco em co
  
   exercicios sobre os modulos de data e hora do python.
 
-
+##
 ### 3. Projeto Final
  Na diretório *16.Projeto Final* contém o projeto criado para o encerramento do curso de Python Caça Talentos.
  
@@ -110,3 +115,7 @@ Um programa de curso python oferecido pelo Governo do Estado de Pernambuco em co
 <img src="https://user-images.githubusercontent.com/63428197/206770410-537ee4f9-1577-4986-8949-5dcfe3aba379.png" width="500px"/>
 </div>
 
+##
+ 🚀 Pensando em avançar em meus estudos de python, separei temas avançados e/ou especificos da linguagem em branchs diferentes: 
+-
+### - 🔐 apis-studies 
